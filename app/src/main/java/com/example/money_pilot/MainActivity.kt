@@ -1,5 +1,7 @@
 package com.example.money_pilot
 
+import android.app.AlertDialog
+import android.app.DatePickerDialog
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -10,6 +12,9 @@ import android.widget.Toast
 import androidx.activity.ComponentActivity
 import com.example.money_pilot.controlador.CampoGasto
 import com.example.money_pilot.controlador.GastoControlador
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Locale
 
 class MainActivity : ComponentActivity() {
 
@@ -36,6 +41,12 @@ class MainActivity : ComponentActivity() {
         btnClear = findViewById(R.id.btnClear)
         btnSave = findViewById(R.id.btnSave)
         btnBack = findViewById(R.id.btnBack)
+
+        configurarSelector(etDate) { mostrarCalendario() }
+        configurarSelector(etCategory) { mostrarLista("Categoría", controlador.categorias, etCategory) }
+        configurarSelector(etMethod) { mostrarLista("Método", controlador.metodos, etMethod) }
+
+        etDate.setText(controlador.fechaHoy())
 
         listOf(etDate, etCategory, etMethod, etDescription).forEach { campo ->
             campo.addTextChangedListener(object : TextWatcher {
@@ -66,6 +77,43 @@ class MainActivity : ComponentActivity() {
         btnSave.setOnClickListener {
             guardarDatos()
         }
+    }
+
+    private fun configurarSelector(campo: EditText, accion: () -> Unit) {
+        campo.isFocusable = false
+        campo.isFocusableInTouchMode = false
+        campo.isCursorVisible = false
+        campo.isLongClickable = false
+        campo.setOnClickListener { accion() }
+    }
+
+    private fun mostrarCalendario() {
+        val formato = SimpleDateFormat(GastoControlador.FORMATO_FECHA, Locale("es", "MX"))
+        formato.isLenient = false
+        val calendario = Calendar.getInstance()
+        try {
+            formato.parse(etDate.text.toString())?.let { calendario.time = it }
+        } catch (e: Exception) {
+        }
+
+        DatePickerDialog(
+            this,
+            { _, anio, mes, dia ->
+                etDate.setText(String.format(Locale.US, "%02d/%02d/%04d", dia, mes + 1, anio))
+            },
+            calendario.get(Calendar.YEAR),
+            calendario.get(Calendar.MONTH),
+            calendario.get(Calendar.DAY_OF_MONTH)
+        ).show()
+    }
+
+    private fun mostrarLista(titulo: String, opciones: List<String>, destino: EditText) {
+        AlertDialog.Builder(this)
+            .setTitle(titulo)
+            .setItems(opciones.toTypedArray()) { _, indice ->
+                destino.setText(opciones[indice])
+            }
+            .show()
     }
 
     private fun guardarDatos() {
@@ -116,7 +164,7 @@ class MainActivity : ComponentActivity() {
 
     private fun limpiarCampos() {
         etAmount.text.clear()
-        etDate.text.clear()
+        etDate.setText(controlador.fechaHoy())
         etCategory.text.clear()
         etMethod.text.clear()
         etDescription.text.clear()
