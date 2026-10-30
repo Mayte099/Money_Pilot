@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="pastelPink">#FFF1F2</color>
-    <color name="cherryPink">#E11D48</color>
-    <color name="textDarkPink">#883955</color>
-    <color name="lightPinkBorder">#F9D8DE</color>
     <color name="white">#FFFFFF</color>
-    <color name="gray">#808080</color>
+    <color name="pastelPink">#FCE4EC</color>
+    <color name="cherryPink">#9B2D58</color>
+    <color name="textDarkPink">#7A2748</color>
+    <color name="mpBorderPink">#F3C9D5</color>
+    <color name="mpHintPink">#E6B8C3</color>
+    <color name="mpCardStart">#FFFFFF</color>
+    <color name="mpCardEnd">#FCE4EC</color>
+    <color name="mpBgTop">#F9DCE6</color>
+    <color name="mpBgBottom">#FFFFFF</color>
+    <color name="mpError">#D32F2F</color>
 </resources>

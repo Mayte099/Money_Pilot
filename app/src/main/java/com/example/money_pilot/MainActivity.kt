@@ -1,12 +1,15 @@
 package com.example.money_pilot
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.ComponentActivity
+import com.example.money_pilot.controlador.CampoGasto
 import com.example.money_pilot.controlador.GastoControlador
-import com.example.money_pilot.modelo.GastoModelo
 
 class MainActivity : ComponentActivity() {
 
@@ -17,6 +20,7 @@ class MainActivity : ComponentActivity() {
     private lateinit var etDescription: EditText
     private lateinit var btnClear: Button
     private lateinit var btnSave: Button
+    private lateinit var btnBack: View
 
     private val controlador = GastoControlador()
 
@@ -31,6 +35,29 @@ class MainActivity : ComponentActivity() {
         etDescription = findViewById(R.id.etDescription)
         btnClear = findViewById(R.id.btnClear)
         btnSave = findViewById(R.id.btnSave)
+        btnBack = findViewById(R.id.btnBack)
+
+        listOf(etDate, etCategory, etMethod, etDescription).forEach { campo ->
+            campo.addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+                override fun afterTextChanged(s: Editable?) {
+                    quitarError(campo)
+                }
+            })
+        }
+
+        etAmount.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+            override fun afterTextChanged(s: Editable?) {
+                etAmount.error = null
+            }
+        })
+
+        btnBack.setOnClickListener {
+            finish()
+        }
 
         btnClear.setOnClickListener {
             limpiarCampos()
@@ -42,25 +69,49 @@ class MainActivity : ComponentActivity() {
     }
 
     private fun guardarDatos() {
-        val montoTexto = etAmount.text.toString()
-        val montoValor = if (montoTexto.isNotEmpty()) montoTexto.toDouble() else 0.0
-
-        val nuevoGasto = GastoModelo(
-            monto = montoValor,
-            fecha = etDate.text.toString(),
-            categoria = etCategory.text.toString(),
-            metodo = etMethod.text.toString(),
-            descripcion = etDescription.text.toString()
+        val resultado = controlador.validarYRegistrar(
+            etAmount.text.toString(),
+            etDate.text.toString(),
+            etCategory.text.toString(),
+            etMethod.text.toString(),
+            etDescription.text.toString()
         )
 
-        val exito = controlador.registrarNuevoGasto(nuevoGasto)
+        if (resultado.errores.isNotEmpty()) {
+            var primerError: EditText? = null
+            resultado.errores.forEach { (campo, mensaje) ->
+                val vista = campoDe(campo)
+                if (vista === etAmount) etAmount.error = mensaje else marcarError(vista, mensaje)
+                if (primerError == null) primerError = vista
+            }
+            primerError?.requestFocus()
+            return
+        }
 
-        if (exito) {
+        if (resultado.exito) {
             Toast.makeText(this, "Gasto guardado correctamente", Toast.LENGTH_SHORT).show()
             limpiarCampos()
         } else {
-            Toast.makeText(this, "Por favor, llena los campos obligatorios", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "No se pudo guardar el gasto", Toast.LENGTH_SHORT).show()
         }
+    }
+
+    private fun campoDe(campo: CampoGasto): EditText = when (campo) {
+        CampoGasto.MONTO -> etAmount
+        CampoGasto.FECHA -> etDate
+        CampoGasto.CATEGORIA -> etCategory
+        CampoGasto.METODO -> etMethod
+        CampoGasto.DESCRIPCION -> etDescription
+    }
+
+    private fun marcarError(campo: EditText, mensaje: String) {
+        campo.error = mensaje
+        campo.setBackgroundResource(R.drawable.bg_campo_error)
+    }
+
+    private fun quitarError(campo: EditText) {
+        campo.error = null
+        campo.setBackgroundResource(R.drawable.bg_campo)
     }
 
     private fun limpiarCampos() {
@@ -69,5 +120,8 @@ class MainActivity : ComponentActivity() {
         etCategory.text.clear()
         etMethod.text.clear()
         etDescription.text.clear()
+        etAmount.error = null
+        listOf(etDate, etCategory, etMethod, etDescription).forEach { quitarError(it) }
+        etAmount.requestFocus()
     }
 }

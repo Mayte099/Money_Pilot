@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
-    <!-- El fondo transparente para que tome el color rosa de la pantalla -->
-    <solid android:color="@android:color/transparent" />
-    <!-- El borde color rosa claro -->
-    <stroke android:width="2dp" android:color="@color/lightPinkBorder" />
-    <!-- Las esquinas redondeadas -->
+    <gradient
+        android:angle="315"
+        android:startColor="@color/mpCardStart"
+        android:endColor="@color/mpCardEnd" />
+    <stroke android:width="1dp" android:color="@color/mpBorderPink" />
     <corners android:radius="24dp" />
 </shape>

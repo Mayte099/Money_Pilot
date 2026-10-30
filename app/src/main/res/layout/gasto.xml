@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/pastelPink"
+    android:background="@drawable/bg_fondo_rosa"
+    android:fillViewport="true"
     android:padding="24dp">
 
     <LinearLayout
@@ -16,6 +17,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp">
+
+            <ImageView
+                android:id="@+id/btnBack"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/bg_boton_atras"
+                android:padding="8dp"
+                android:src="@drawable/ic_back" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -34,7 +45,7 @@
             android:background="@drawable/bg_tarjeta_monto"
             android:gravity="center"
             android:orientation="vertical"
-            android:padding="32dp"
+            android:padding="28dp"
             android:layout_marginBottom="24dp">
 
             <TextView
@@ -45,14 +56,14 @@
                 android:textSize="12sp"
                 android:textStyle="bold"
                 android:letterSpacing="0.1"
-                android:layout_marginBottom="16dp"/>
+                android:layout_marginBottom="12dp"/>
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:gravity="center"
-                android:layout_marginBottom="16dp">
+                android:gravity="center_vertical"
+                android:layout_marginBottom="12dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -66,8 +77,10 @@
                     android:id="@+id/etAmount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:minWidth="100dp"
+                    android:gravity="center"
                     android:hint="0|0"
-                    android:textColorHint="#E6B8C3"
+                    android:textColorHint="@color/mpHintPink"
                     android:textColor="@color/cherryPink"
                     android:inputType="numberDecimal"
                     android:background="@null"
@@ -84,17 +97,106 @@
         </LinearLayout>
 
         <!-- Campos del Formulario -->
-        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Fecha" android:textColor="@color/textDarkPink" android:textStyle="bold"/>
-        <EditText android:id="@+id/etDate" android:layout_width="match_parent" android:layout_height="50dp" android:background="@color/white" android:hint="08/10/2026" android:padding="12dp" android:layout_marginBottom="16dp" android:layout_marginTop="8dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fecha"
+            android:textColor="@color/textDarkPink"
+            android:textSize="13sp"
+            android:textStyle="bold"/>
+        <EditText
+            android:id="@+id/etDate"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:background="@drawable/bg_campo"
+            android:drawableStart="@drawable/ic_calendar"
+            android:drawableEnd="@drawable/ic_calendar"
+            android:drawablePadding="12dp"
+            android:hint="08/10/2026"
+            android:inputType="date"
+            android:textColor="@color/textDarkPink"
+            android:textColorHint="@color/mpHintPink"
+            android:textSize="14sp"
+            android:paddingStart="14dp"
+            android:paddingEnd="14dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="8dp"/>
 
-        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Categoría" android:textColor="@color/textDarkPink" android:textStyle="bold"/>
-        <EditText android:id="@+id/etCategory" android:layout_width="match_parent" android:layout_height="50dp" android:background="@color/white" android:hint="Selecciona una categoría" android:padding="12dp" android:layout_marginBottom="16dp" android:layout_marginTop="8dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Categoría"
+            android:textColor="@color/textDarkPink"
+            android:textSize="13sp"
+            android:textStyle="bold"/>
+        <EditText
+            android:id="@+id/etCategory"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:background="@drawable/bg_campo"
+            android:drawableStart="@drawable/ic_tag"
+            android:drawableEnd="@drawable/ic_chevron_down"
+            android:drawablePadding="12dp"
+            android:hint="Selecciona una categoría"
+            android:inputType="text"
+            android:textColor="@color/textDarkPink"
+            android:textColorHint="@color/mpHintPink"
+            android:textSize="14sp"
+            android:paddingStart="14dp"
+            android:paddingEnd="14dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="8dp"/>
 
-        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Método" android:textColor="@color/textDarkPink" android:textStyle="bold"/>
-        <EditText android:id="@+id/etMethod" android:layout_width="match_parent" android:layout_height="50dp" android:background="@color/white" android:hint="Selecciona un método" android:padding="12dp" android:layout_marginBottom="16dp" android:layout_marginTop="8dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Método"
+            android:textColor="@color/textDarkPink"
+            android:textSize="13sp"
+            android:textStyle="bold"/>
+        <EditText
+            android:id="@+id/etMethod"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:background="@drawable/bg_campo"
+            android:drawableStart="@drawable/ic_card"
+            android:drawableEnd="@drawable/ic_chevron_down"
+            android:drawablePadding="12dp"
+            android:hint="Selecciona un método"
+            android:inputType="text"
+            android:textColor="@color/textDarkPink"
+            android:textColorHint="@color/mpHintPink"
+            android:textSize="14sp"
+            android:paddingStart="14dp"
+            android:paddingEnd="14dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="8dp"/>
 
-        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Descripción" android:textColor="@color/textDarkPink" android:textStyle="bold"/>
-        <EditText android:id="@+id/etDescription" android:layout_width="match_parent" android:layout_height="100dp" android:background="@color/white" android:hint="Agrega una nota sobre este gasto" android:gravity="top" android:padding="12dp" android:layout_marginTop="8dp" android:layout_marginBottom="32dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Descripción"
+            android:textColor="@color/textDarkPink"
+            android:textSize="13sp"
+            android:textStyle="bold"/>
+        <EditText
+            android:id="@+id/etDescription"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@drawable/bg_campo"
+            android:drawableStart="@drawable/ic_note"
+            android:drawablePadding="12dp"
+            android:gravity="top"
+            android:hint="Agrega una nota sobre este gasto"
+            android:inputType="textMultiLine"
+            android:textColor="@color/textDarkPink"
+            android:textColorHint="@color/mpHintPink"
+            android:textSize="14sp"
+            android:paddingStart="14dp"
+            android:paddingEnd="14dp"
+            android:paddingTop="14dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="32dp"/>
 
         <!-- Botones -->
         <LinearLayout
@@ -107,9 +209,13 @@
                 android:layout_width="0dp"
                 android:layout_height="56dp"
                 android:layout_weight="1"
+                android:background="@drawable/bg_boton_limpiar"
+                app:backgroundTint="@null"
+                android:stateListAnimator="@null"
+                android:textAllCaps="false"
                 android:text="Limpiar"
                 android:textColor="@color/cherryPink"
-                android:backgroundTint="@color/white"
+                android:textSize="15sp"
                 android:layout_marginEnd="8dp"/>
 
             <Button
@@ -117,9 +223,13 @@
                 android:layout_width="0dp"
                 android:layout_height="56dp"
                 android:layout_weight="1"
+                android:background="@drawable/bg_boton_guardar"
+                app:backgroundTint="@null"
+                android:stateListAnimator="@null"
+                android:textAllCaps="false"
                 android:text="Guardar"
                 android:textColor="@color/white"
-                android:backgroundTint="@color/cherryPink"
+                android:textSize="15sp"
                 android:layout_marginStart="8dp"/>
         </LinearLayout>
 
