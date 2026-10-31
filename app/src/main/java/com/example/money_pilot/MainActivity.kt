@@ -2,6 +2,7 @@ package com.example.money_pilot
 
 import android.app.AlertDialog
 import android.app.DatePickerDialog
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -26,6 +27,7 @@ class MainActivity : ComponentActivity() {
     private lateinit var btnClear: Button
     private lateinit var btnSave: Button
     private lateinit var btnBack: View
+    private lateinit var btnMetas: View
 
     private val controlador = GastoControlador()
 
@@ -41,6 +43,7 @@ class MainActivity : ComponentActivity() {
         btnClear = findViewById(R.id.btnClear)
         btnSave = findViewById(R.id.btnSave)
         btnBack = findViewById(R.id.btnBack)
+        btnMetas = findViewById(R.id.btnMetas)
 
         configurarSelector(etDate) { mostrarCalendario() }
         configurarSelector(etCategory) { mostrarLista("Categoría", controlador.categorias, etCategory) }
@@ -68,6 +71,18 @@ class MainActivity : ComponentActivity() {
 
         btnBack.setOnClickListener {
             finish()
+        }
+
+        btnMetas.isClickable = true
+        btnMetas.isFocusable = true
+        btnMetas.bringToFront()
+        btnMetas.setOnClickListener {
+            Toast.makeText(this, "Click en Metas", Toast.LENGTH_SHORT).show()
+            try {
+                startActivity(Intent(this, MetasActivity::class.java))
+            } catch (e: Exception) {
+                Toast.makeText(this, "Error: ${e.message}", Toast.LENGTH_LONG).show()
+            }
         }
 
         btnClear.setOnClickListener {
