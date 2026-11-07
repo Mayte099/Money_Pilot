@@ -1,5 +1,6 @@
 package com.example.money_pilot
 
+import android.app.AlertDialog
 import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
@@ -15,7 +16,7 @@ import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 import java.text.SimpleDateFormat
-import java.util.Date
+import java.util.Calendar
 import java.util.Locale
 
 class AnalisisActivity : ComponentActivity() {
@@ -28,6 +29,7 @@ class AnalisisActivity : ComponentActivity() {
     private lateinit var llLeyenda: LinearLayout
     private lateinit var btnBack: View
     private lateinit var btnHistorial: View
+    private lateinit var btnPeriodo: View
 
     private val controlador = AnalisisControlador.instancia
 
@@ -52,9 +54,7 @@ class AnalisisActivity : ComponentActivity() {
         llLeyenda = findViewById(R.id.llLeyenda)
         btnBack = findViewById(R.id.btnBackAnalisis)
         btnHistorial = findViewById(R.id.btnHistorial)
-
-        val mes = SimpleDateFormat("MMMM", Locale("es", "MX")).format(Date())
-        tvPeriodo.text = mes.replaceFirstChar { it.uppercase() }
+        btnPeriodo = findViewById(R.id.btnPeriodo)
 
         configurarGrafica()
 
@@ -62,6 +62,7 @@ class AnalisisActivity : ComponentActivity() {
         btnHistorial.setOnClickListener {
             Toast.makeText(this, "Historial detallado próximamente", Toast.LENGTH_SHORT).show()
         }
+        btnPeriodo.setOnClickListener { mostrarSelectorMes() }
 
         actualizarPantalla()
     }
@@ -69,6 +70,26 @@ class AnalisisActivity : ComponentActivity() {
     override fun onResume() {
         super.onResume()
         actualizarPantalla()
+    }
+
+    private fun nombreMes(anio: Int, mes: Int): String {
+        val cal = Calendar.getInstance()
+        cal.clear()
+        cal.set(anio, mes, 1)
+        val texto = SimpleDateFormat("MMMM yyyy", Locale("es", "MX")).format(cal.time)
+        return texto.replaceFirstChar { it.uppercase() }
+    }
+
+    private fun mostrarSelectorMes() {
+        val meses = controlador.mesesDisponibles()
+        val nombres = meses.map { nombreMes(it.first, it.second) }.toTypedArray()
+        AlertDialog.Builder(this)
+            .setTitle("Selecciona un mes")
+            .setItems(nombres) { _, indice ->
+                controlador.seleccionarMes(meses[indice].first, meses[indice].second)
+                actualizarPantalla()
+            }
+            .show()
     }
 
     private fun configurarGrafica() {
@@ -87,6 +108,7 @@ class AnalisisActivity : ComponentActivity() {
     private fun actualizarPantalla() {
         val analisis = controlador.obtenerAnalisis()
 
+        tvPeriodo.text = nombreMes(controlador.anioSeleccionado(), controlador.mesSeleccionado())
         tvTotal.text = dinero(analisis.totalGeneral)
         tvPromedio.text = dinero(analisis.promedioDiario)
         tvMayorCategoria.text = if (analisis.categoriaMayor.isBlank()) "Vacío" else analisis.categoriaMayor
