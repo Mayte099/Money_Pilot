@@ -117,6 +117,7 @@ class GastoControlador {
         // 2. Aquí irá la conexión a tu base de datos (Room o SQLite)
         // Por ahora simularemos que se guardó correctamente imprimiéndolo en consola
         println("Gasto guardado exitosamente: $gasto")
+        AnalisisControlador.instancia.agregarGasto(gasto)
 
         return true // Retorna verdadero si se guardó bien
     }

@@ -29,6 +29,11 @@
             android:label="@string/app_name"
             android:theme="@style/Theme.Money_Pilot"
             android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".AnalisisActivity"
+            android:exported="false"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Money_Pilot" />
     </application>
 
 </manifest>

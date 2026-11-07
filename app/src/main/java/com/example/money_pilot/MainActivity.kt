@@ -28,6 +28,7 @@ class MainActivity : ComponentActivity() {
     private lateinit var btnSave: Button
     private lateinit var btnBack: View
     private lateinit var btnMetas: View
+    private lateinit var btnAnalisis: View
 
     private val controlador = GastoControlador()
 
@@ -44,6 +45,7 @@ class MainActivity : ComponentActivity() {
         btnSave = findViewById(R.id.btnSave)
         btnBack = findViewById(R.id.btnBack)
         btnMetas = findViewById(R.id.btnMetas)
+        btnAnalisis = findViewById(R.id.btnAnalisis)
 
         configurarSelector(etDate) { mostrarCalendario() }
         configurarSelector(etCategory) { mostrarLista("Categoría", controlador.categorias, etCategory) }
@@ -83,6 +85,10 @@ class MainActivity : ComponentActivity() {
             } catch (e: Exception) {
                 Toast.makeText(this, "Error: ${e.message}", Toast.LENGTH_LONG).show()
             }
+        }
+
+        btnAnalisis.setOnClickListener {
+            startActivity(Intent(this, AnalisisActivity::class.java))
         }
 
         btnClear.setOnClickListener {

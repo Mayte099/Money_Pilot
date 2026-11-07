@@ -48,6 +48,19 @@
                 android:focusable="true"
                 android:padding="8dp"
                 android:src="@drawable/ic_meta_flag" />
+
+            <ImageView
+                android:id="@+id/btnAnalisis"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="8dp"
+                android:layout_toStartOf="@id/btnMetas"
+                android:background="@drawable/bg_boton_atras"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="8dp"
+                android:src="@drawable/ic_meta_target" />
         </RelativeLayout>
 
         <!-- Tarjeta de Monto -->
