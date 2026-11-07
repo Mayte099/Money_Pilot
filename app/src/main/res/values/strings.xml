@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">Money_Pilot</string>
+    <string name="app_name">MoneyPilot</string>
+    <string name="slogan">Tu dinero, en orden.</string>
+    <string name="login_user">Usuario o Correo</string>
+    <string name="login_password">Contraseña</string>
+    <string name="btn_login">Iniciar Sesión</string>
+    <string name="no_account">¿No tienes acceso? Crea cuenta</string>
 </resources>

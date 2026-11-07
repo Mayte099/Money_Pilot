@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="primary_wine">#7A1E3A</color>
+    <color name="primary_wine_dark">#5C1329</color>
+    <color name="accent_pink">#E88CA2</color>
+    <color name="light_pink_bg">#FDF6F7</color>
+    <color name="card_bg">#FFFFFF</color>
+    <color name="text_dark">#2C2C2C</color>
+    <color name="text_muted">#757575</color>
     <color name="white">#FFFFFF</color>
-    <color name="pastelPink">#FCE4EC</color>
-    <color name="cherryPink">#9B2D58</color>
-    <color name="textDarkPink">#7A2748</color>
-    <color name="mpBorderPink">#F3C9D5</color>
-    <color name="mpHintPink">#E6B8C3</color>
-    <color name="mpCardStart">#FFFFFF</color>
-    <color name="mpCardEnd">#FCE4EC</color>
-    <color name="mpBgTop">#F9DCE6</color>
-    <color name="mpBgBottom">#FFFFFF</color>
-    <color name="mpError">#D32F2F</color>
 </resources>
