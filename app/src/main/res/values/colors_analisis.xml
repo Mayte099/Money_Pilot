@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="an_fondo">#FFF1F2</color>
+    <color name="an_vino">#883955</color>
+    <color name="an_cereza">#E11D48</color>
+    <color name="an_cereza_oscuro">#9F1239</color>
+    <color name="an_rosa_medio">#D88C9A</color>
+    <color name="an_rosa_claro">#F9D8DE</color>
+    <color name="an_texto_suave">#B07A8E</color>
+    <color name="an_borde">#F9D0D9</color>
+    <color name="an_subtarjeta">#FDEEF1</color>
+    <color name="an_gris_vacio">#E5E7EB</color>
+    <color name="an_blanco">#FFFFFF</color>
+</resources>
