@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FDF6F7"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="Crear Cuenta"
+            android:textColor="#8B263E"
+            android:textSize="26sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:text="Ingresa tus datos para registrarte"
+            android:textColor="#666666"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/etNombreCompleto"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/bg_input"
+            android:hint="Nombre Completo"
+            android:inputType="textPersonName"
+            android:paddingHorizontal="16dp" />
+
+        <EditText
+            android:id="@+id/etCorreo"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/bg_input"
+            android:hint="Correo Electrónico"
+            android:inputType="textEmailAddress"
+            android:paddingHorizontal="16dp" />
+
+        <EditText
+            android:id="@+id/etPasswordReg"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/bg_input"
+            android:hint="Contraseña"
+            android:inputType="textPassword"
+            android:paddingHorizontal="16dp" />
+
+        <EditText
+            android:id="@+id/etConfirmPasswordReg"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/bg_input"
+            android:hint="Confirmar Contraseña"
+            android:inputType="textPassword"
+            android:paddingHorizontal="16dp" />
+
+        <CheckBox
+            android:id="@+id/cbTrabaja"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="¿Actualmente trabajas?"
+            android:textColor="#333333" />
+
+        <EditText
+            android:id="@+id/etIngresoInicial"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="24dp"
+            android:background="@drawable/bg_input"
+            android:hint="Ingreso Mensual (Opcional)"
+            android:inputType="numberDecimal"
+            android:paddingHorizontal="16dp" />
+
+        <!-- Botón ajustado a android.widget.Button -->
+        <android.widget.Button
+            android:id="@+id/btnCrearMiCuenta"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/bg_button_wine"
+            android:text="Crear Mi Cuenta"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+</ScrollView>

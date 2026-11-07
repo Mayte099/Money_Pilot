@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FDF6F7"
+    android:fitsSystemWindows="true"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:paddingTop="48dp"
+        android:paddingBottom="20dp">
+
+        <!-- 1. BARRA SUPERIOR (Bada más por la cámara) -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp">
+
+            <ImageButton
+                android:id="@+id/btnMenuLateral"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:background="#00000000"
+                android:contentDescription="Menú"
+                android:src="@android:drawable/ic_menu_sort_by_size" />
+
+            <TextView
+                android:id="@+id/tvLogoHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="MoneyPilot"
+                android:textColor="#8B263E"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <!-- 2. SELECTOR DE MES -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/bg_card_clean"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="VER MOVIMIENTOS DE"
+                    android:textColor="#A0A0A0"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvSubtituloMes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Junio"
+                    android:textColor="#666666"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <Spinner
+                android:id="@+id/spMeses"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <!-- 3. BLOQUE DE TRES TARJETAS INTERACTIVAS -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_marginBottom="30dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <!-- Tarjeta Gastos -->
+            <LinearLayout
+                android:id="@+id/cardGastos"
+                android:layout_width="0dp"
+                android:layout_height="90dp"
+                android:layout_marginEnd="6dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_card_clean"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <TextView
+                    android:id="@+id/tvLabelGastos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="GASTOS"
+                    android:textColor="#999999"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvMontoGastos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="----"
+                    android:textColor="#333333"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <!-- Tarjeta Saldo (Centro Vinotinto por defecto) -->
+            <LinearLayout
+                android:id="@+id/cardSaldo"
+                android:layout_width="0dp"
+                android:layout_height="115dp"
+                android:layout_weight="1.2"
+                android:background="@drawable/bg_card_wine"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <TextView
+                    android:id="@+id/tvLabelSaldo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SALDO"
+                    android:textColor="#FFFFFF"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvMontoSaldo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="••••"
+                    android:textColor="#FFFFFF"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvSubSaldo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="disponible"
+                    android:textColor="#E0E0E0"
+                    android:textSize="9sp" />
+            </LinearLayout>
+
+            <!-- Tarjeta Ingresos -->
+            <LinearLayout
+                android:id="@+id/cardIngresos"
+                android:layout_width="0dp"
+                android:layout_height="90dp"
+                android:layout_marginStart="6dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_card_clean"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <TextView
+                    android:id="@+id/tvLabelIngresos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="INGRESOS"
+                    android:textColor="#999999"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvMontoIngresos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="----"
+                    android:textColor="#333333"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- 4. DISTRIBUCIÓN -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="DISTRIBUCIÓN"
+            android:textColor="#E57373"
+            android:textSize="11sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvTituloGrafica"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="Gastos de junio"
+            android:textColor="#333333"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="140dp"
+                android:layout_height="140dp">
+
+                <View
+                    android:layout_width="130dp"
+                    android:layout_height="130dp"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/bg_chart_donut" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="Oculto"
+                    android:textColor="#666666"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="●  Hogar"
+                    android:textColor="#8B263E"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="●  Comida"
+                    android:textColor="#E57373"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="●  Otros"
+                    android:textColor="#FFB74D"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

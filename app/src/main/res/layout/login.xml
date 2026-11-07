@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FDF6F7"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <ImageView
+        android:id="@+id/imgLogo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginBottom="24dp"
+        android:contentDescription="Logo"
+        android:src="@drawable/logo" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="¡Bienvenido!"
+        android:textColor="#8B263E"
+        android:textSize="28sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:text="Inicia sesión en MoneyPilot"
+        android:textColor="#666666"
+        android:textSize="14sp" />
+
+    <EditText
+        android:id="@+id/etUsuario"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/bg_input"
+        android:hint="Usuario@gmail.com"
+        android:inputType="textEmailAddress"
+        android:paddingHorizontal="16dp" />
+
+    <EditText
+        android:id="@+id/etContrasena"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/bg_input"
+        android:hint="Contraseña"
+        android:inputType="textPassword"
+        android:paddingHorizontal="16dp" />
+
+    <!-- Cambio clave: android.widget.Button fuerza la renderización del drawable -->
+    <android.widget.Button
+        android:id="@+id/btnIniciarSesion"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/bg_button_wine"
+        android:text="Iniciar Sesión"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvCrearCuenta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:text="¿No tienes cuenta? Regístrate aquí"
+        android:textColor="#8B263E"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+</LinearLayout>

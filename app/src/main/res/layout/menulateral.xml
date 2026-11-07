@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FDF6F7"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    android:paddingStart="24dp"
+    android:paddingEnd="24dp"
+    android:paddingTop="48dp"
+    android:paddingBottom="24dp">
+
+    <!-- Header: Logo MoneyPilot y Botón Cerrar (X) -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp">
+
+        <TextView
+            android:id="@+id/tvLogoMenu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:text="MoneyPilot"
+            android:textColor="#8B263E"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <ImageButton
+            android:id="@+id/btnCerrarMenu"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:background="#00000000"
+            android:contentDescription="Cerrar menú"
+            android:src="@android:drawable/ic_menu_close_clear_cancel" />
+    </RelativeLayout>
+
+    <!-- Opción 1: Inicio (Seleccionado en Vinotinto) -->
+    <LinearLayout
+        android:id="@+id/optionInicio"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/bg_card_wine"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🏠  Inicio"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- Opción 2: Gastos -->
+    <TextView
+        android:id="@+id/optionGastos"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="16dp"
+        android:text="📋  Gastos"
+        android:textColor="#666666"
+        android:textSize="15sp" />
+
+    <!-- Opción 3: Ingresos -->
+    <TextView
+        android:id="@+id/optionIngresos"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="16dp"
+        android:text="📥  Ingresos"
+        android:textColor="#666666"
+        android:textSize="15sp" />
+
+    <!-- Opción 4: Categoría -->
+    <TextView
+        android:id="@+id/optionCategoria"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="16dp"
+        android:text="🎛  Categoría"
+        android:textColor="#666666"
+        android:textSize="15sp" />
+
+    <!-- Opción 5: Metas -->
+    <TextView
+        android:id="@+id/optionMetas"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="16dp"
+        android:text="🎯  Metas"
+        android:textColor="#666666"
+        android:textSize="15sp" />
+
+    <!-- Opción 6: Análisis -->
+    <TextView
+        android:id="@+id/optionAnalisis"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="16dp"
+        android:text="📊  Análisis"
+        android:textColor="#666666"
+        android:textSize="15sp" />
+
+    <!-- Opción 7: Cuenta -->
+    <TextView
+        android:id="@+id/optionCuenta"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="16dp"
+        android:text="👤  Cuenta"
+        android:textColor="#666666"
+        android:textSize="15sp" />
+
+    <!-- Espaciador flexible para empujar el botón al fondo -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <!-- Opción 8: Cerrar Sesión en Vinotinto -->
+    <LinearLayout
+        android:id="@+id/optionCerrarSesion"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="➡️️ Cerrar sesión"
+            android:textColor="#8B263E"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+</LinearLayout>
