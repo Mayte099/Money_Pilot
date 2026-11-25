@@ -2,6 +2,7 @@ package com.example.money_pilot
 
 import android.app.Activity
 import android.app.DatePickerDialog
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
@@ -17,6 +18,7 @@ import android.widget.Toast
 import com.example.money_pilot.Controlador.autenticacion.ControladorIngreso
 import com.example.money_pilot.Controlador.autenticacion.ControladorLogin
 import com.example.money_pilot.Controlador.autenticacion.controladorcrearcuenta
+import com.example.money_pilot.modelo.AppDatosCompartidos
 import com.example.money_pilot.modelo.Modelousuario
 import java.text.SimpleDateFormat
 import java.util.Calendar
@@ -39,6 +41,8 @@ class MainActivity : Activity() {
         val config = resources.configuration
         config.setLocale(localeEs)
         createConfigurationContext(config)
+
+        AppDatosCompartidos.iniciar(this)
 
         cargarVistaLogin()
     }
@@ -158,7 +162,7 @@ class MainActivity : Activity() {
 
         // Acciones en Tarjetas
         cardGastos?.setOnClickListener {
-            Toast.makeText(this, "Detalle de Gastos", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, GastoActivity::class.java))
         }
 
         cardSaldo?.setOnClickListener {
@@ -193,8 +197,7 @@ class MainActivity : Activity() {
         }
 
         optionGastos?.setOnClickListener {
-            Toast.makeText(this, "Sección: Gastos", Toast.LENGTH_SHORT).show()
-            cargarVistaDashboard(nombreUsuarioActual)
+            startActivity(Intent(this, GastoActivity::class.java))
         }
 
         optionIngresos?.setOnClickListener {
@@ -202,23 +205,20 @@ class MainActivity : Activity() {
         }
 
         optionCategoria?.setOnClickListener {
-            Toast.makeText(this, "Sección: Categoría", Toast.LENGTH_SHORT).show()
-            cargarVistaDashboard(nombreUsuarioActual)
+            startActivity(Intent(this, CategoriasActivity::class.java))
         }
 
         optionMetas?.setOnClickListener {
-            Toast.makeText(this, "Sección: Metas", Toast.LENGTH_SHORT).show()
-            cargarVistaDashboard(nombreUsuarioActual)
+            startActivity(Intent(this, MetasActivity::class.java))
         }
 
         optionAnalisis?.setOnClickListener {
-            Toast.makeText(this, "Sección: Análisis", Toast.LENGTH_SHORT).show()
-            cargarVistaDashboard(nombreUsuarioActual)
+            startActivity(Intent(this, AnalisisActivity::class.java))
         }
 
         optionCuenta?.setOnClickListener {
-            Toast.makeText(this, "Cuenta activa: $nombreUsuarioActual ($correoUsuarioActual)", Toast.LENGTH_LONG).show()
-            cargarVistaDashboard(nombreUsuarioActual)
+            AppDatosCompartidos.actualizarPerfil(nombreUsuarioActual, correoUsuarioActual)
+            startActivity(Intent(this, PerfilActivity::class.java))
         }
 
         optionCerrarSesion?.setOnClickListener {
