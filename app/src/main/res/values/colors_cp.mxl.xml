@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="cp_fondo_top">#FFE4E8</color>
+    <color name="cp_fondo">#FFF1F2</color>
+    <color name="cp_vino">#883955</color>
+    <color name="cp_boton">#A63A5E</color>
+    <color name="cp_cereza">#C2185B</color>
+    <color name="cp_borde">#F9D0D9</color>
+    <color name="cp_hint">#D9A5B4</color>
+    <color name="cp_texto_suave">#B07A8E</color>
+    <color name="cp_gris_icono">#8A8A8A</color>
+    <color name="cp_avatar_fondo">#F9D8DE</color>
+    <color name="cp_blanco">#FFFFFF</color>
+</resources>

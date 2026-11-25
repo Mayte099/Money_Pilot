@@ -11,6 +11,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.ComponentActivity
+import androidx.activity.result.contract.ActivityResultContracts
 import com.example.money_pilot.controlador.CampoGasto
 import com.example.money_pilot.controlador.GastoControlador
 import java.text.SimpleDateFormat
@@ -29,8 +30,19 @@ class MainActivity : ComponentActivity() {
     private lateinit var btnBack: View
     private lateinit var btnMetas: View
     private lateinit var btnAnalisis: View
+    private lateinit var btnCategorias: View
+    private lateinit var btnPerfil: View
 
     private val controlador = GastoControlador()
+
+    private val selectorCategoria =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { resultado ->
+            if (resultado.resultCode == RESULT_OK) {
+                resultado.data?.getStringExtra(CategoriasActivity.EXTRA_CATEGORIA)?.let {
+                    etCategory.setText(it)
+                }
+            }
+        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,9 +58,11 @@ class MainActivity : ComponentActivity() {
         btnBack = findViewById(R.id.btnBack)
         btnMetas = findViewById(R.id.btnMetas)
         btnAnalisis = findViewById(R.id.btnAnalisis)
+        btnCategorias = findViewById(R.id.btnCategorias)
+        btnPerfil = findViewById(R.id.btnPerfil)
 
         configurarSelector(etDate) { mostrarCalendario() }
-        configurarSelector(etCategory) { mostrarLista("Categoría", controlador.categorias, etCategory) }
+        configurarSelector(etCategory) { abrirSelectorCategoria() }
         configurarSelector(etMethod) { mostrarLista("Método", controlador.metodos, etMethod) }
 
         etDate.setText(controlador.fechaHoy())
@@ -75,20 +89,20 @@ class MainActivity : ComponentActivity() {
             finish()
         }
 
-        btnMetas.isClickable = true
-        btnMetas.isFocusable = true
-        btnMetas.bringToFront()
         btnMetas.setOnClickListener {
-            Toast.makeText(this, "Click en Metas", Toast.LENGTH_SHORT).show()
-            try {
-                startActivity(Intent(this, MetasActivity::class.java))
-            } catch (e: Exception) {
-                Toast.makeText(this, "Error: ${e.message}", Toast.LENGTH_LONG).show()
-            }
+            startActivity(Intent(this, MetasActivity::class.java))
         }
 
         btnAnalisis.setOnClickListener {
             startActivity(Intent(this, AnalisisActivity::class.java))
+        }
+
+        btnCategorias.setOnClickListener {
+            startActivity(Intent(this, CategoriasActivity::class.java))
+        }
+
+        btnPerfil.setOnClickListener {
+            startActivity(Intent(this, PerfilActivity::class.java))
         }
 
         btnClear.setOnClickListener {
@@ -106,6 +120,12 @@ class MainActivity : ComponentActivity() {
         campo.isCursorVisible = false
         campo.isLongClickable = false
         campo.setOnClickListener { accion() }
+    }
+
+    private fun abrirSelectorCategoria() {
+        val intent = Intent(this, CategoriasActivity::class.java)
+        intent.putExtra(CategoriasActivity.EXTRA_SELECCION, true)
+        selectorCategoria.launch(intent)
     }
 
     private fun mostrarCalendario() {

@@ -1,5 +1,6 @@
 package com.example.money_pilot.controlador
 
+import com.example.money_pilot.modelo.AppDatosCompartidos
 import com.example.money_pilot.modelo.GastoModelo
 import java.text.ParseException
 import java.text.SimpleDateFormat
@@ -20,17 +21,8 @@ class GastoControlador {
         const val FORMATO_FECHA = "dd/MM/yyyy"
     }
 
-    val categorias = listOf(
-        "Alimentos",
-        "Transporte",
-        "Servicios",
-        "Salud",
-        "Entretenimiento",
-        "Educación",
-        "Ropa",
-        "Hogar",
-        "Otros"
-    )
+    val categorias: List<String>
+        get() = AppDatosCompartidos.nombresCategorias()
 
     val metodos = listOf(
         "Efectivo",
