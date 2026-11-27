@@ -1,4 +1,4 @@
-package com.example.money_pilot
+package com.example.money_pilot.controlador.tareas
 
 import android.app.Activity
 import android.app.DatePickerDialog
@@ -18,8 +18,8 @@ import android.widget.Toast
 import com.example.money_pilot.Controlador.autenticacion.ControladorIngreso
 import com.example.money_pilot.Controlador.autenticacion.ControladorLogin
 import com.example.money_pilot.Controlador.autenticacion.controladorcrearcuenta
+import com.example.money_pilot.R
 import com.example.money_pilot.modelo.AppDatosCompartidos
-import com.example.money_pilot.modelo.Modelousuario
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale

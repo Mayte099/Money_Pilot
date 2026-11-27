@@ -1,4 +1,4 @@
-package com.example.money_pilot
+package com.example.money_pilot.controlador.tareas
 
 import android.app.Activity
 import android.app.AlertDialog
@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
+import com.example.money_pilot.R
 import com.example.money_pilot.controlador.CampoGasto
 import com.example.money_pilot.controlador.GastoControlador
 import com.example.money_pilot.modelo.AppDatosCompartidos

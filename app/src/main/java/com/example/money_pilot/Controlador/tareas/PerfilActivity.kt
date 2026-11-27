@@ -1,4 +1,4 @@
-package com.example.money_pilot
+package com.example.money_pilot.controlador.tareas
 
 import android.app.AlertDialog
 import android.content.Intent
@@ -10,6 +10,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.ComponentActivity
+import com.example.money_pilot.R
 import com.example.money_pilot.controlador.CampoContrasena
 import com.example.money_pilot.controlador.CampoPerfil
 import com.example.money_pilot.controlador.PerfilControlador

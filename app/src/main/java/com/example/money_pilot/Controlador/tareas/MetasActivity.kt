@@ -1,6 +1,5 @@
-package com.example.money_pilot
+package com.example.money_pilot.controlador.tareas
 
-import android.content.Context
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -15,6 +14,7 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.ComponentActivity
+import com.example.money_pilot.R
 import com.example.money_pilot.controlador.CampoMeta
 import com.example.money_pilot.controlador.MetasControlador
 import com.example.money_pilot.controlador.ResultadoMeta
@@ -141,7 +141,7 @@ class MetasActivity : ComponentActivity() {
     }
 
     private fun ocultarTeclado() {
-        val manager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        val manager = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
         val vista = currentFocus ?: etNombre
         manager.hideSoftInputFromWindow(vista.windowToken, 0)
         vista.clearFocus()
